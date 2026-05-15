@@ -116,7 +116,7 @@ export default function Sidebar() {
             className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}
           >
             <img
-              src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=80"
+              src="/images/favicon.png.png"
               alt="Profile"
               className="w-9 h-9 rounded-full object-cover border-2 border-blue-100"
             />

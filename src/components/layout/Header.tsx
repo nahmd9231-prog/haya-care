@@ -35,7 +35,7 @@ export default function Header() {
             <p className="text-xs text-gray-400">{isRTL ? 'السبت، 2 مايو 2026' : 'Sat, May 2, 2026'}</p>
           </div>
           <img
-            src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=80"
+            src="/images/favicon.png.png"
             alt="Profile"
             className="w-9 h-9 rounded-full object-cover border-2 border-blue-100 shadow-sm"
           />

@@ -40,7 +40,7 @@ export default function Settings() {
 
         <div className={`flex items-center gap-4 mb-5 ${isRTL ? 'flex-row-reverse' : ''}`}>
           <img
-            src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=100"
+            src="/images/favicon.png.png"
             alt="Profile"
             className="w-16 h-16 rounded-2xl object-cover border-2 border-blue-100 shadow-sm"
           />
