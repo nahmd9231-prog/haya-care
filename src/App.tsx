@@ -1,46 +1,37 @@
-import { useState } from 'react';
-import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import ChatWidget from './components/ChatWidget';
-import Footer from './components/Footer';
+import { AppProvider, useApp } from './context/AppContext';
+import Layout from "@/components/layout/Layout";
+import ChatWidget from "@/components/chat/ChatWidget";
+import Dashboard from "@/components/pages/Dashboard";
+import Readings from "@/components/pages/Readings";
+import MedicalHistory from "@/components/pages/MedicalHistory";
+import Tips from "@/components/pages/Tips";
+import AIAssistant from "@/components/pages/AIAssistant";
+import Settings from "@/components/pages/Settings";
 
-function AppLayout() {
-  const { dir } = useLanguage();
-  const [activeItem, setActiveItem] = useState('dashboard');
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+function AppContent() {
+  const { currentPage } = useApp();
+
+  const pages = {
+    dashboard: <Dashboard />,
+    readings: <Readings />,
+    medicalHistory: <MedicalHistory />,
+    tips: <Tips />,
+    aiAssistant: <AIAssistant />,
+    settings: <Settings />,
+  };
 
   return (
-    <div dir={dir} className="min-h-screen bg-gray-50 flex" style={{ fontFamily: dir === 'rtl' ? "'Segoe UI', Tahoma, 'Arial', sans-serif" : "'Inter', 'Segoe UI', sans-serif" }}>
-      <Sidebar
-        activeItem={activeItem}
-        onItemClick={setActiveItem}
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
-
-      <div className="flex-1 flex flex-col min-h-screen">
-        <Header onMenuToggle={() => setSidebarOpen(true)} />
-
-        <main className="flex-1 p-4 lg:p-6">
-          <Dashboard />
-        </main>
-
-        <Footer />
-      </div>
-
+    <Layout>
+      {pages[currentPage]}
       <ChatWidget />
-    </div>
+    </Layout>
   );
 }
 
-function App() {
+export default function App() {
   return (
-    <LanguageProvider>
-      <AppLayout />
-    </LanguageProvider>
+    <AppProvider>
+      <AppContent />
+    </AppProvider>
   );
 }
-
-export default App;
